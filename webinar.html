@@ -1,0 +1,44 @@
+<ion-view title="List of Webinars" >
+    <ion-content ng-init="get()" class="shz-bg-shade">
+            <ion-refresher on-refresh="doRefresh()">
+                    <ion-refresher-content>
+                    </ion-refresher-content>
+                  </ion-refresher>
+        
+        <ion-list  ng-repeat="webinar in webinars">
+            <ion-item ng-hide="$root.name==webinar.WebinarTakenBy"
+              class="card" style="box-shadow: 3px 2px 8px 1px rgba(0,0,0,0.3); margin-bottom: 0px !important;">
+                <div class=row style="padding-top:15px; padding-bottom: 15px;">
+                 Webinar Id :{{webinar.meetingId}}<br>
+                 TakenBy :{{webinar.WebinarTakenBy}}<br>
+                 attendeePw :{{webinar.attendeePw}}<br>
+                 Date :{{webinar.datetime}}
+                 <div>
+                   <button ng-click="joinWebinar(webinar.meetingId,webinar.attendeePw)">join</button>
+                </div>
+                </div>
+                
+                <div class=row>
+                    <p style="float: left; " ></p>
+                </div>
+            </ion-item>
+        </ion-list>
+        <ion-list  ng-repeat="webinar in webinars">
+            <ion-item ng-show="$root.name==webinar.WebinarTakenBy"
+              class="card" style="box-shadow: 3px 2px 8px 1px rgba(0,0,0,0.3); margin-bottom: 0px !important;">
+                <div class=row style="padding-top:15px; padding-bottom: 15px;">
+                 Webinar Id :{{webinar.meetingId}}<br>
+                 Presenter Pwd :{{webinar.moderatorPw}}<br>
+                 Date :{{webinar.datetime}}
+                 <div>
+                   <button ng-click="startWebinar(webinar.meetingId,webinar.meetingName,webinar.attendeePw,
+                   webinar.moderatorPw)">start</button>
+                </div>
+                </div>
+                
+                <div class=row>
+                    <p style="float: left; " ></p>
+                </div>
+            </ion-item>
+    </ion-content>
+</ion-view>
